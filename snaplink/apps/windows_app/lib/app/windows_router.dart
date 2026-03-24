@@ -60,7 +60,7 @@ class _DesktopShellFrame extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final listenerState = ref.watch(desktopListenerStateProvider);
     final selectedIndex =
-        _locations.indexOf(location).clamp(0, _locations.length - 1);
+        _locations.indexOf(location).clamp(0, _locations.length - 1) as int;
     final status = listenerState.valueOrNull?.status.name ?? 'booting';
 
     return DesktopShell(
@@ -104,4 +104,3 @@ class _DesktopShellFrame extends ConsumerWidget {
     );
   }
 }
-

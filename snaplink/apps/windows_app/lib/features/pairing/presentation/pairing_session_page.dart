@@ -73,6 +73,9 @@ class PairingSessionPage extends ConsumerWidget {
                           Text('Desktop: ${session.desktopName}'),
                           Text('Listener Port: ${session.port}'),
                           Text('One-time Token Used: ${session.used}'),
+                          Text(
+                            'Expires in: ${session.expiresAt.difference(DateTime.now().toUtc()).inSeconds.clamp(0, 60)}s',
+                          ),
                           const SizedBox(height: 18),
                           StatusBadge(label: state.status.name),
                         ],
@@ -87,4 +90,3 @@ class PairingSessionPage extends ConsumerWidget {
     );
   }
 }
-

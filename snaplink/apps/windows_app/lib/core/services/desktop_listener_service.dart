@@ -141,7 +141,9 @@ class DesktopListenerService implements ITransportProvider, IConnectionManager {
     );
     final qr = currentQrPayload;
     _state = _state.copyWith(
-      status: AppConnectionStatus.waitingForScan,
+      status: _state.activeConnection == null
+          ? AppConnectionStatus.waitingForScan
+          : AppConnectionStatus.connected,
       pairingSession: _session,
       qrPayload: qr == null ? null : _qrPayloadCodec.encode(qr),
       clearError: true,

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:core_protocol/core_protocol.dart';
 import 'package:device_security/device_security.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,20 +64,34 @@ final transferQueueProvider = Provider<TransferQueueController>((ref) {
   late final TransferQueueController queue;
   queue = TransferQueueController(
     onDispatch: (TransferJob job) async {
-      final result = await connectionService.uploadJob(
-        job,
-        onProgress: (int sent, int total) {
-          queue.markProgress(
-            TransferProgress(
-              jobId: job.jobId,
-              bytesSent: sent,
-              totalBytes: total,
-              percent: total == 0 ? 0 : sent / total,
-              status: TransferStatus.uploading,
-            ),
-          );
-        },
-      );
+      late final TransferResult result;
+      try {
+        result = await connectionService.uploadJob(
+          job,
+          onProgress: (int sent, int total) {
+            queue.markProgress(
+              TransferProgress(
+                jobId: job.jobId,
+                bytesSent: sent,
+                totalBytes: total,
+                percent: total == 0 ? 0 : sent / total,
+                status: TransferStatus.uploading,
+              ),
+            );
+          },
+        );
+      } catch (error) {
+        result = TransferResult(
+          jobId: job.jobId,
+          status: TransferStatus.failed,
+          completedAt: DateTime.now().toUtc(),
+          finalFilename: job.photo.sanitizedFilename,
+          duplicate: false,
+          checksumSha256: job.photo.checksumSha256,
+          storagePath: job.photo.sourceFilePath,
+          message: error.toString(),
+        );
+      }
       await historyRepository.add(result);
       await queue.markResult(result);
     },
@@ -102,32 +114,3 @@ final cameraCaptureControllerProvider = StateNotifierProvider<
     settingsRepository: ref.watch(settingsRepositoryProvider),
   );
 });
-
-TransferJob buildTransferJobFromFile({
-  required String path,
-  required String checksum,
-  required int length,
-}) {
-  final file = File(path);
-  final filename = file.uri.pathSegments.isEmpty
-      ? 'snaplink_image.jpg'
-      : file.uri.pathSegments.last;
-  return TransferJob(
-    jobId: DateTime.now().microsecondsSinceEpoch.toString(),
-    photo: PhotoMetadata(
-      sourceFilePath: path,
-      originalFilename: filename,
-      sanitizedFilename: filename,
-      byteLength: length,
-      checksumSha256: checksum,
-      capturedAt: DateTime.now().toUtc(),
-      mimeType: 'image/jpeg',
-      sourceDeviceId: 'mobile',
-      compressionQuality: 88,
-    ),
-    status: TransferStatus.queued,
-    createdAt: DateTime.now().toUtc(),
-    attemptCount: 0,
-    autoSend: true,
-  );
-}

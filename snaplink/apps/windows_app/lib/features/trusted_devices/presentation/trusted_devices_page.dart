@@ -34,6 +34,43 @@ class TrustedDevicesPage extends ConsumerWidget {
                       children: <Widget>[
                         StatusBadge(label: device.revoked ? 'revoked' : 'trusted'),
                         FilledButton.tonal(
+                          onPressed: () async {
+                            final textController = TextEditingController(
+                              text: device.nickname,
+                            );
+                            await showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dialogContext) {
+                                return AlertDialog(
+                                  title: const Text('Edit Nickname'),
+                                  content: TextField(controller: textController),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () => Navigator.of(dialogContext).pop(),
+                                      child: const Text('Cancel'),
+                                    ),
+                                    FilledButton(
+                                      onPressed: () async {
+                                        await controller.rename(
+                                          device,
+                                          textController.text.trim().isEmpty
+                                              ? device.deviceName
+                                              : textController.text.trim(),
+                                        );
+                                        if (dialogContext.mounted) {
+                                          Navigator.of(dialogContext).pop();
+                                        }
+                                      },
+                                      child: const Text('Save'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: const Text('Rename'),
+                        ),
+                        FilledButton.tonal(
                           onPressed: () => controller.revoke(device.trustedDeviceId),
                           child: const Text('Revoke'),
                         ),

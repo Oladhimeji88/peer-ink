@@ -61,6 +61,14 @@ class ConnectPage extends ConsumerWidget {
                               : () => context.go('/camera'),
                           child: const Text('Open Camera'),
                         ),
+                        OutlinedButton(
+                          onPressed: state.currentDevice == null
+                              ? null
+                              : () => ref
+                                  .read(mobileConnectionServiceProvider)
+                                  .sendHeartbeat(),
+                          child: const Text('Test Connection'),
+                        ),
                       ],
                     ),
                   ],
@@ -116,4 +124,3 @@ class ConnectPage extends ConsumerWidget {
     );
   }
 }
-

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:core_protocol/core_protocol.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -39,8 +42,43 @@ class TransferHistoryPage extends ConsumerWidget {
                       return ListTile(
                         title: Text(item.finalFilename),
                         subtitle: Text(item.completedAt.toLocal().toString()),
-                        trailing: StatusBadge(
-                          label: item.duplicate ? 'duplicate' : item.status.name,
+                        trailing: Wrap(
+                          spacing: 12,
+                          children: <Widget>[
+                            StatusBadge(
+                              label: item.duplicate ? 'duplicate' : item.status.name,
+                            ),
+                            if (item.storagePath != null)
+                              FilledButton.tonal(
+                                onPressed: () async {
+                                  final file = File(item.storagePath!);
+                                  if (!file.existsSync()) {
+                                    return;
+                                  }
+                                  await ref.read(transferQueueProvider).enqueue(
+                                        TransferJob(
+                                          jobId: '${item.jobId}_retry',
+                                          photo: PhotoMetadata(
+                                            sourceFilePath: item.storagePath!,
+                                            originalFilename: item.finalFilename,
+                                            sanitizedFilename: item.finalFilename,
+                                            byteLength: await file.length(),
+                                            checksumSha256:
+                                                item.checksumSha256 ?? '',
+                                            capturedAt: DateTime.now().toUtc(),
+                                            mimeType: 'image/jpeg',
+                                            sourceDeviceId: 'mobile',
+                                          ),
+                                          status: TransferStatus.queued,
+                                          createdAt: DateTime.now().toUtc(),
+                                          attemptCount: 0,
+                                          autoSend: true,
+                                        ),
+                                      );
+                                },
+                                child: const Text('Resend'),
+                              ),
+                          ],
                         ),
                       );
                     },
@@ -53,4 +91,3 @@ class TransferHistoryPage extends ConsumerWidget {
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_app/core/models/mobile_connection_state.dart';
 import 'package:mobile_app/core/providers/app_providers.dart';
 import 'package:mobile_app/core/services/mobile_connection_service.dart';
+import 'package:mobile_app/core/services/support_services.dart';
 import 'package:mobile_app/features/connect/presentation/connect_page.dart';
 import 'package:mobile_app/features/trusted_devices/application/trusted_devices_controller.dart';
 

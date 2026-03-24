@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:transfer_engine/transfer_engine.dart';
 
 import '../../../core/models/mobile_connection_state.dart';
-import '../../../core/providers/app_providers.dart';
 import '../../../core/services/camera_capture_service.dart';
 
 class CameraCaptureController extends StateNotifier<CameraCaptureState> {
@@ -41,11 +40,27 @@ class CameraCaptureController extends StateNotifier<CameraCaptureState> {
       final file = File(shot.path);
       final settings = await _settingsRepository.read();
       final checksum = await _checksumService.hashFile(file);
-      final job = buildTransferJobFromFile(
-        path: shot.path,
-        checksum: checksum,
-        length: await file.length(),
-      ).copyWith(autoSend: autoSend ?? !settings.reviewBeforeSend);
+      final filename = file.uri.pathSegments.isEmpty
+          ? 'snaplink_image.jpg'
+          : file.uri.pathSegments.last;
+      final job = TransferJob(
+        jobId: DateTime.now().microsecondsSinceEpoch.toString(),
+        photo: PhotoMetadata(
+          sourceFilePath: shot.path,
+          originalFilename: filename,
+          sanitizedFilename: filename,
+          byteLength: await file.length(),
+          checksumSha256: checksum,
+          capturedAt: DateTime.now().toUtc(),
+          mimeType: 'image/jpeg',
+          sourceDeviceId: 'mobile',
+          compressionQuality: settings.compressionQuality,
+        ),
+        status: TransferStatus.queued,
+        createdAt: DateTime.now().toUtc(),
+        attemptCount: 0,
+        autoSend: autoSend ?? !settings.reviewBeforeSend,
+      );
       if (job.autoSend) {
         await _queueController.enqueue(job);
       }
@@ -58,4 +73,3 @@ class CameraCaptureController extends StateNotifier<CameraCaptureState> {
     }
   }
 }
-
