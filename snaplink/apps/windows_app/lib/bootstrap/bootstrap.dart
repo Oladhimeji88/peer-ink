@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:device_security/device_security.dart';
 
 import '../app/windows_app.dart';
 import '../core/providers/app_providers.dart';
@@ -65,4 +66,3 @@ Future<void> bootstrap() async {
     ),
   );
 }
-

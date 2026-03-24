@@ -315,7 +315,6 @@ class MobileConnectionService implements IConnectionManager {
       storagePath: file.path,
       message: ack.message,
     );
-    await _historyRepository.add(result);
     return result;
   }
 
