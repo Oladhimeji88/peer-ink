@@ -15,7 +15,7 @@ class StatusBadge extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: (color ?? Theme.of(context).colorScheme.secondary)
-            .withValues(alpha: 0.14),
+            .withOpacity(0.14),
         borderRadius: BorderRadius.circular(999),
       ),
       child: Padding(

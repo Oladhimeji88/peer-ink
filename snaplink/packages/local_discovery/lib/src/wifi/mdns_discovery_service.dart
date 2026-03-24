@@ -41,7 +41,7 @@ class MdnsDiscoveryService implements IDiscoveryService {
     } catch (_) {
       return _fallbackCache.fromTrustedDevice(trustedDevice);
     } finally {
-      await _client.stop();
+      _client.stop();
     }
 
     return _fallbackCache.fromTrustedDevice(trustedDevice);
@@ -55,10 +55,9 @@ class MdnsDiscoveryService implements IDiscoveryService {
 
   @override
   Future<void> stopBrowsing() async {
-    await _client.stop();
+    _client.stop();
   }
 
   @override
   Stream<List<DiscoveryCandidate>> watchCandidates() => _controller.stream;
 }
-

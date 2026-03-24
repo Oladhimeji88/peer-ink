@@ -48,7 +48,7 @@ class TransferQueueController implements ITransferEngine {
   }
 
   Future<void> markProgress(TransferProgress progress) async {
-    await _progressController.add(progress);
+    _progressController.add(progress);
     final job = _jobs.firstWhereOrNull((item) => item.jobId == progress.jobId);
     if (job == null) {
       return;
@@ -95,4 +95,3 @@ class TransferQueueController implements ITransferEngine {
     _emitQueue();
   }
 }
-

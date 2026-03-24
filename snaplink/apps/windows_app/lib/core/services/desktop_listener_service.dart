@@ -291,7 +291,7 @@ class DesktopListenerService implements ITransportProvider, IConnectionManager {
     final connection = ActiveConnection(
       connectionId: _tokenService.generateOpaqueToken(length: 16),
       trustedDeviceId: trustedDeviceId,
-      remoteHost: socket.closeCode?.toString() ?? trustedDevice.lastKnownHost,
+      remoteHost: trustedDevice.lastKnownHost,
       remotePort: trustedDevice.lastKnownPort,
       connectedAt: DateTime.now().toUtc(),
       healthState: ConnectionHealthState.good,
@@ -690,12 +690,15 @@ class DesktopListenerService implements ITransportProvider, IConnectionManager {
         switch (message.type) {
           case 'hello':
             await _handleHello(socket, message);
+            break;
           case 'pairRequest':
           case 'pair_request':
             await _handlePairRequest(socket, message);
+            break;
           case 'authSuccess':
           case 'auth_success':
             await _handleAuthSuccess(socket, message);
+            break;
           case 'heartbeat':
             _sendMessage(
               socket,
@@ -704,11 +707,14 @@ class DesktopListenerService implements ITransportProvider, IConnectionManager {
                 'timestamp': DateTime.now().toUtc().toIso8601String(),
               },
             );
+            break;
           case 'uploadInit':
           case 'upload_init':
             await _handleUploadInit(socket, message);
+            break;
           case 'disconnect':
             await disconnect(reason: 'Remote device closed the session.');
+            break;
           default:
             break;
         }

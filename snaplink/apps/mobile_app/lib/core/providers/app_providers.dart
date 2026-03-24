@@ -84,7 +84,9 @@ final transferQueueProvider = Provider<TransferQueueController>((ref) {
       await queue.markResult(result);
     },
   );
-  ref.onDispose(queue.dispose);
+  ref.onDispose(() {
+    queue.dispose();
+  });
   return queue;
 });
 
@@ -129,4 +131,3 @@ TransferJob buildTransferJobFromFile({
     autoSend: true,
   );
 }
-

@@ -355,24 +355,29 @@ class MobileConnectionService implements IConnectionManager {
           case 'pairResponse':
           case 'pair_response':
             _pairingCompleter?.complete(PairingResponse.fromJson(message.payload));
+            break;
           case 'authChallenge':
           case 'auth_challenge':
             _authChallengeCompleter?.complete(message.payload);
+            break;
           case 'authSuccess':
           case 'auth_success':
             _authAcceptedCompleter?.complete(
               (message.payload['accepted'] as bool?) ?? true,
             );
+            break;
           case 'heartbeatAck':
           case 'heartbeat_ack':
             _state = _state.copyWith(lastHealth: ConnectionHealthState.excellent);
             _emitState();
             _healthController.add(ConnectionHealthState.excellent);
+            break;
           case 'uploadReady':
           case 'upload_ready':
             _uploadReadyCompleter?.complete(
               UploadInitResponse.fromJson(message.payload),
             );
+            break;
           case 'uploadError':
           case 'upload_error':
             final error = ErrorMessage.fromJson(message.payload);
@@ -381,8 +386,10 @@ class MobileConnectionService implements IConnectionManager {
               lastError: error.message,
             );
             _emitState();
+            break;
           case 'disconnect':
             await disconnect(reason: 'Desktop closed the session.');
+            break;
           default:
             break;
         }
