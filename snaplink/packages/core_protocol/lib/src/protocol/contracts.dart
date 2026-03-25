@@ -1,6 +1,7 @@
-import '../models/app_models.dart';
-import '../models/connection_models.dart';
-import '../models/transfer_models.dart';
+import 'package:core_protocol/src/models/app_models.dart';
+import 'package:core_protocol/src/models/connection_models.dart';
+import 'package:core_protocol/src/models/transfer_models.dart';
+import 'package:core_protocol/src/enums/protocol_enums.dart';
 
 abstract class ITransportProvider {
   Future<void> start();

@@ -1,4 +1,4 @@
-import '../../../core/services/desktop_listener_service.dart';
+import 'package:windows_app/core/services/desktop_listener_service.dart';
 
 class PairingController {
   PairingController(this._listenerService);

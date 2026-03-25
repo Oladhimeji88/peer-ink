@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_ui/shared_ui.dart';
 
-import 'mobile_router.dart';
+import 'package:mobile_app/app/mobile_router.dart';
 
 class SnaplinkMobileApp extends StatelessWidget {
   const SnaplinkMobileApp({super.key});

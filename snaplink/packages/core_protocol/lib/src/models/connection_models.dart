@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../enums/protocol_enums.dart';
+import 'package:core_protocol/src/enums/protocol_enums.dart';
+import 'package:core_protocol/src/models/app_models.dart';
 
 part 'connection_models.freezed.dart';
 part 'connection_models.g.dart';
@@ -76,4 +77,3 @@ class AuthSession with _$AuthSession {
   factory AuthSession.fromJson(Map<String, dynamic> json) =>
       _$AuthSessionFromJson(json);
 }
-

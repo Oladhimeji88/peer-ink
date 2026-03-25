@@ -8,8 +8,8 @@ import 'package:device_security/device_security.dart';
 import 'package:path/path.dart' as p;
 import 'package:transfer_engine/transfer_engine.dart';
 
-import '../models/desktop_listener_state.dart';
-import 'support_services.dart';
+import 'package:windows_app/core/models/desktop_listener_state.dart';
+import 'package:windows_app/core/services/support_services.dart';
 
 class DesktopListenerService implements ITransportProvider, IConnectionManager {
   DesktopListenerService({

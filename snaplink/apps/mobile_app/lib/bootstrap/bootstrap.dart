@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:device_security/device_security.dart';
 
-import '../app/mobile_app.dart';
-import '../core/providers/app_providers.dart';
-import '../core/repositories/preferences_repositories.dart';
-import '../core/services/camera_capture_service.dart';
-import '../core/services/mobile_connection_service.dart';
-import '../core/services/support_services.dart';
+import 'package:mobile_app/app/mobile_app.dart';
+import 'package:mobile_app/core/providers/app_providers.dart';
+import 'package:mobile_app/core/repositories/preferences_repositories.dart';
+import 'package:mobile_app/core/services/camera_capture_service.dart';
+import 'package:mobile_app/core/services/mobile_connection_service.dart';
+import 'package:mobile_app/core/services/support_services.dart';
 
 Future<void> bootstrap() async {
   WidgetsFlutterBinding.ensureInitialized();

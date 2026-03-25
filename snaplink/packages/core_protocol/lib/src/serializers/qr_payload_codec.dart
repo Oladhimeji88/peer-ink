@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../models/connection_models.dart';
+import 'package:core_protocol/src/models/connection_models.dart';
 
 class QrPayloadCodec {
   const QrPayloadCodec();

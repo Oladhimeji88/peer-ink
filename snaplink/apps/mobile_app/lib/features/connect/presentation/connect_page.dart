@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_ui/shared_ui.dart';
 
-import '../../../core/providers/app_providers.dart';
+import 'package:mobile_app/core/providers/app_providers.dart';
 
 class ConnectPage extends ConsumerWidget {
   const ConnectPage({super.key});

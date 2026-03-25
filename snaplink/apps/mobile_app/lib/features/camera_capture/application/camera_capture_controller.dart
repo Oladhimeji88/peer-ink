@@ -4,8 +4,8 @@ import 'package:core_protocol/core_protocol.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:transfer_engine/transfer_engine.dart';
 
-import '../../../core/models/mobile_connection_state.dart';
-import '../../../core/services/camera_capture_service.dart';
+import 'package:mobile_app/core/models/mobile_connection_state.dart';
+import 'package:mobile_app/core/services/camera_capture_service.dart';
 
 class CameraCaptureController extends StateNotifier<CameraCaptureState> {
   CameraCaptureController({

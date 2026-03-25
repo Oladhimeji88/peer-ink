@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:core_protocol/core_protocol.dart';
 import 'package:path/path.dart' as p;
 
-import '../checksum/checksum_service.dart';
-import '../models/receive_pipeline_models.dart';
+import 'package:transfer_engine/src/checksum/checksum_service.dart';
+import 'package:transfer_engine/src/models/receive_pipeline_models.dart';
 
 class FileReceivePipeline {
   FileReceivePipeline({

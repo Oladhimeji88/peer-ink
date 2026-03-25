@@ -3,13 +3,13 @@ import 'package:device_security/device_security.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:transfer_engine/transfer_engine.dart';
 
-import '../../features/camera_capture/application/camera_capture_controller.dart';
-import '../../features/settings/application/settings_controller.dart';
-import '../../features/trusted_devices/application/trusted_devices_controller.dart';
-import '../models/mobile_connection_state.dart';
-import '../services/camera_capture_service.dart';
-import '../services/mobile_connection_service.dart';
-import '../services/support_services.dart';
+import 'package:mobile_app/features/camera_capture/application/camera_capture_controller.dart';
+import 'package:mobile_app/features/settings/application/settings_controller.dart';
+import 'package:mobile_app/features/trusted_devices/application/trusted_devices_controller.dart';
+import 'package:mobile_app/core/models/mobile_connection_state.dart';
+import 'package:mobile_app/core/services/camera_capture_service.dart';
+import 'package:mobile_app/core/services/mobile_connection_service.dart';
+import 'package:mobile_app/core/services/support_services.dart';
 
 final settingsRepositoryProvider = Provider<ISettingsRepository>((ref) {
   throw UnimplementedError();

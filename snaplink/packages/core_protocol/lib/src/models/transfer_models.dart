@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../enums/protocol_enums.dart';
+import 'package:core_protocol/src/enums/protocol_enums.dart';
 
 part 'transfer_models.freezed.dart';
 part 'transfer_models.g.dart';

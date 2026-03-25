@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_ui/shared_ui.dart';
 
-import '../core/providers/app_providers.dart';
-import '../features/dashboard/presentation/dashboard_page.dart';
-import '../features/gallery/presentation/gallery_page.dart';
-import '../features/logs/presentation/logs_page.dart';
-import '../features/pairing/presentation/pairing_session_page.dart';
-import '../features/settings/presentation/settings_page.dart';
-import '../features/trusted_devices/presentation/trusted_devices_page.dart';
+import 'package:windows_app/core/providers/app_providers.dart';
+import 'package:windows_app/features/dashboard/presentation/dashboard_page.dart';
+import 'package:windows_app/features/gallery/presentation/gallery_page.dart';
+import 'package:windows_app/features/logs/presentation/logs_page.dart';
+import 'package:windows_app/features/pairing/presentation/pairing_session_page.dart';
+import 'package:windows_app/features/settings/presentation/settings_page.dart';
+import 'package:windows_app/features/trusted_devices/presentation/trusted_devices_page.dart';
 
 GoRouter buildWindowsRouter() {
   return GoRouter(
@@ -60,7 +60,7 @@ class _DesktopShellFrame extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final listenerState = ref.watch(desktopListenerStateProvider);
     final selectedIndex =
-        _locations.indexOf(location).clamp(0, _locations.length - 1) as int;
+        _locations.indexOf(location).clamp(0, _locations.length - 1);
     final status = listenerState.valueOrNull?.status.name ?? 'booting';
 
     return DesktopShell(

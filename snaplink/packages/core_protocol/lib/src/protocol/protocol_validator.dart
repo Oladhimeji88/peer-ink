@@ -1,5 +1,5 @@
-import '../models/connection_models.dart';
-import '../models/protocol_models.dart';
+import 'package:core_protocol/src/models/connection_models.dart';
+import 'package:core_protocol/src/models/protocol_models.dart';
 
 class ProtocolValidationException implements Exception {
   ProtocolValidationException(this.message);

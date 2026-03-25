@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:core_protocol/core_protocol.dart';
 import 'package:multicast_dns/multicast_dns.dart';
 
-import '../abstractions/discovery_service.dart';
+import 'package:local_discovery/src/abstractions/discovery_service.dart';
 
 class MdnsDiscoveryService implements IDiscoveryService {
   MdnsDiscoveryService({

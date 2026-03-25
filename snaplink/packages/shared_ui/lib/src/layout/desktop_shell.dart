@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/status_badge.dart';
+import 'package:shared_ui/src/widgets/status_badge.dart';
 
 class DesktopShell extends StatelessWidget {
   const DesktopShell({

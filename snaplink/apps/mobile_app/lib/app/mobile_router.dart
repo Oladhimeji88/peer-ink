@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/camera_capture/presentation/camera_capture_page.dart';
-import '../features/connect/presentation/connect_page.dart';
-import '../features/onboarding/presentation/onboarding_page.dart';
-import '../features/qr_scan/presentation/qr_scan_page.dart';
-import '../features/settings/presentation/settings_page.dart';
-import '../features/transfer_history/presentation/transfer_history_page.dart';
-import '../features/trusted_devices/presentation/trusted_devices_page.dart';
+import 'package:mobile_app/features/camera_capture/presentation/camera_capture_page.dart';
+import 'package:mobile_app/features/connect/presentation/connect_page.dart';
+import 'package:mobile_app/features/onboarding/presentation/onboarding_page.dart';
+import 'package:mobile_app/features/qr_scan/presentation/qr_scan_page.dart';
+import 'package:mobile_app/features/settings/presentation/settings_page.dart';
+import 'package:mobile_app/features/transfer_history/presentation/transfer_history_page.dart';
+import 'package:mobile_app/features/trusted_devices/presentation/trusted_devices_page.dart';
 
 GoRouter buildMobileRouter() {
   return GoRouter(

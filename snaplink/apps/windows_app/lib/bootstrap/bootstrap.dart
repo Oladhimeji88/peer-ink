@@ -5,11 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:device_security/device_security.dart';
 
-import '../app/windows_app.dart';
-import '../core/providers/app_providers.dart';
-import '../core/repositories/preferences_repositories.dart';
-import '../core/services/desktop_listener_service.dart';
-import '../core/services/support_services.dart';
+import 'package:windows_app/app/windows_app.dart';
+import 'package:windows_app/core/providers/app_providers.dart';
+import 'package:windows_app/core/repositories/preferences_repositories.dart';
+import 'package:windows_app/core/services/desktop_listener_service.dart';
+import 'package:windows_app/core/services/support_services.dart';
 
 Future<void> bootstrap() async {
   WidgetsFlutterBinding.ensureInitialized();

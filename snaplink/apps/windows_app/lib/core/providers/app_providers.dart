@@ -2,12 +2,12 @@ import 'package:core_protocol/core_protocol.dart';
 import 'package:device_security/device_security.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../features/pairing/application/pairing_controller.dart';
-import '../../features/settings/application/settings_controller.dart';
-import '../../features/trusted_devices/application/trusted_devices_controller.dart';
-import '../models/desktop_listener_state.dart';
-import '../services/desktop_listener_service.dart';
-import '../services/support_services.dart';
+import 'package:windows_app/features/pairing/application/pairing_controller.dart';
+import 'package:windows_app/features/settings/application/settings_controller.dart';
+import 'package:windows_app/features/trusted_devices/application/trusted_devices_controller.dart';
+import 'package:windows_app/core/models/desktop_listener_state.dart';
+import 'package:windows_app/core/services/desktop_listener_service.dart';
+import 'package:windows_app/core/services/support_services.dart';
 
 final settingsRepositoryProvider = Provider<ISettingsRepository>((ref) {
   throw UnimplementedError();

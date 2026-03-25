@@ -7,8 +7,8 @@ import 'package:device_security/device_security.dart';
 import 'package:local_discovery/local_discovery.dart';
 import 'package:transfer_engine/transfer_engine.dart';
 
-import '../models/mobile_connection_state.dart';
-import 'support_services.dart';
+import 'package:mobile_app/core/models/mobile_connection_state.dart';
+import 'package:mobile_app/core/services/support_services.dart';
 
 class MobileConnectionService implements IConnectionManager {
   MobileConnectionService({

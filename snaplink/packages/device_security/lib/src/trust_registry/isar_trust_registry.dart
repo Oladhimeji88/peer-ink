@@ -1,8 +1,8 @@
 import 'package:core_protocol/core_protocol.dart';
 import 'package:isar/isar.dart';
 
-import 'trust_registry.dart';
-import 'trust_registry_record.dart';
+import 'package:device_security/src/trust_registry/trust_registry.dart';
+import 'package:device_security/src/trust_registry/trust_registry_record.dart';
 
 class IsarTrustRegistry implements ITrustRegistry {
   IsarTrustRegistry(this._isar);

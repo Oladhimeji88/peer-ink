@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_ui/shared_ui.dart';
 
-import 'windows_router.dart';
+import 'package:windows_app/app/windows_router.dart';
 
 class SnaplinkDesktopApp extends StatelessWidget {
   const SnaplinkDesktopApp({super.key});

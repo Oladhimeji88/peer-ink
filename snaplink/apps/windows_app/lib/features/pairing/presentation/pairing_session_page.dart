@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_ui/shared_ui.dart';
 
-import '../../../core/providers/app_providers.dart';
+import 'package:windows_app/core/providers/app_providers.dart';
 
 class PairingSessionPage extends ConsumerWidget {
   const PairingSessionPage({super.key});

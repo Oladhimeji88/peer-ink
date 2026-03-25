@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-import '../../../core/providers/app_providers.dart';
+import 'package:mobile_app/core/providers/app_providers.dart';
 
 class QrScanPage extends ConsumerStatefulWidget {
   const QrScanPage({super.key});
