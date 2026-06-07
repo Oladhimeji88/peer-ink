@@ -8,7 +8,9 @@ plugins {
 android {
     namespace = "com.snaplink.mobile_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // Pinned to the locally installed NDK; the disk lacks room for the
+    // flutter.ndkVersion (28.2.13676358) download.
+    ndkVersion = "27.1.12297006"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
