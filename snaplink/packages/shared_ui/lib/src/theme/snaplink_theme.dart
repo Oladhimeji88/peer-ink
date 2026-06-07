@@ -32,13 +32,13 @@ class SnaplinkTheme {
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          side: BorderSide(color: _ink.withOpacity(0.08)),
+          side: BorderSide(color: _ink.withValues(alpha: 0.08)),
         ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: _mist,
-        selectedColor: _leaf.withOpacity(0.14),
-        secondarySelectedColor: _amber.withOpacity(0.18),
+        selectedColor: _leaf.withValues(alpha: 0.14),
+        secondarySelectedColor: _amber.withValues(alpha: 0.18),
         side: BorderSide.none,
         labelStyle: const TextStyle(fontWeight: FontWeight.w600),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),

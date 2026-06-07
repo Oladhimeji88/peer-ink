@@ -33,11 +33,11 @@ class _QrScanPageState extends ConsumerState<QrScanPage> {
               setState(() => _handling = true);
               try {
                 await ref.read(mobileConnectionServiceProvider).pairFromQr(value);
-                if (mounted) {
+                if (context.mounted) {
                   context.go('/connect');
                 }
               } catch (error) {
-                if (mounted) {
+                if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(error.toString())),
                   );
