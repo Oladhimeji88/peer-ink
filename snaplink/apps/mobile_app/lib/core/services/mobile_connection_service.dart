@@ -22,9 +22,7 @@ class MobileConnectionService implements IConnectionManager {
     TokenService? tokenService,
     TransferUploadClient? uploadClient,
     IDiscoveryService? discoveryService,
-  })  : _settingsRepository = settingsRepository,
-        _historyRepository = historyRepository,
-        _trustRegistry = trustRegistry,
+  })  : _trustRegistry = trustRegistry,
         _authVault = authVault,
         _telemetrySink = telemetrySink,
         _qrPayloadCodec = qrPayloadCodec ?? const QrPayloadCodec(),
@@ -33,8 +31,6 @@ class MobileConnectionService implements IConnectionManager {
         _uploadClient = uploadClient ?? TransferUploadClient(),
         _discoveryService = discoveryService ?? MdnsDiscoveryService();
 
-  final ISettingsRepository _settingsRepository;
-  final ITransferHistoryRepository _historyRepository;
   final ITrustRegistry _trustRegistry;
   final TrustedSecretVault _authVault;
   final ITelemetrySink _telemetrySink;

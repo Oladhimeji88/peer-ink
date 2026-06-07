@@ -36,6 +36,10 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   mocktail: ^1.0.3
+  # Test-only: the pair->upload integration test drives the desktop listener
+  # against the mobile client in a single harness.
+  windows_app:
+    path: ../windows_app
 
 flutter:
   uses-material-design: true
