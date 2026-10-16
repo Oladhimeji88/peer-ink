@@ -1,0 +1,5 @@
+{
+  "dart.showTodos": false,
+  "debug.openDebug": "neverOpen",
+  "terminal.integrated.inheritEnv": false
+}

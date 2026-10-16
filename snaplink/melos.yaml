@@ -1,0 +1,27 @@
+name: snaplink
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  bootstrap:
+    run: flutter pub get
+    description: Install dependencies for all Flutter apps and packages.
+  analyze:
+    run: melos exec -- "flutter analyze"
+    description: Run static analysis across the monorepo.
+  test:
+    run: melos exec --dir-exists=test -- "flutter test"
+    description: Run package and application test suites.
+  integration_test:
+    run: melos exec --scope=mobile_app -- "flutter test integration_test"
+    description: Run mobile integration tests.
+  codegen:
+    run: melos exec --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
+    description: Generate Freezed, JSON, and Isar code.
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+

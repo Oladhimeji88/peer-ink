@@ -1,0 +1,22 @@
+name: transfer_engine
+description: Queueing, checksums, transfer orchestration, and receive pipeline helpers for SNAPLINK.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  async: ^2.11.0
+  collection: ^1.18.0
+  core_protocol:
+    path: ../core_protocol
+  crypto: ^3.0.3
+  http: ^1.2.1
+  meta: ^1.12.0
+  path: ^1.9.0
+
+dev_dependencies:
+  mocktail: ^1.0.3
+  test: ^1.25.2
+
